@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import VideoConferenceJoining from './pages/VideoConferenceJoining';
 
 import { SocketProvider } from './providers/Socket';
+import { PeerProvider } from './providers/Peer';
 import Room from './pages/Room';
 
 
@@ -27,14 +28,16 @@ const App = () => {
   return (
     <div>
       <SocketProvider>
-        <Routes>
-          <Route path={'/'} element={<Login />} />
-          <Route path={'/signup'} element={<SignUp />} />
-          <Route path={'/login'} element={<Login />} />
-          <Route path={'/dashboard'} element={<Dashboard token={token} />} />
-          <Route path={'/joinconference'} element={<VideoConferenceJoining />} />
-          <Route path={'/room/:roomId'} element={<Room />} />
-        </Routes> 
+        <PeerProvider>
+          <Routes>
+            <Route path={'/'} element={<Login />} />
+            <Route path={'/signup'} element={<SignUp />} />
+            <Route path={'/login'} element={<Login />} />
+            <Route path={'/dashboard'} element={<Dashboard token={token} />} />
+            <Route path={'/joinconference'} element={<VideoConferenceJoining />} />
+            <Route path={'/room/:roomId'} element={<Room />} />
+          </Routes>
+        </PeerProvider>
       </SocketProvider>
 
     </div>
