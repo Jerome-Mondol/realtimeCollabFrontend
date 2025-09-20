@@ -2,15 +2,22 @@ import { useEffect } from 'react';
 import { useSocket } from '../providers/Socket';
 
 const VideoConferenceJoining = ({ user }) => {
-
-    
-    const { socket } = useSocket();
+  const { socket } = useSocket();
 
   useEffect(() => {
-    if (socket) {
-      socket.emit('join-room', { roomId: 1, emailId: "test@test.com" });
-    }
-  }, [socket]);
+  if (!socket) return;
+
+  socket.on("connect", () => {
+    console.log("✅ Connected:", socket.id);
+    socket.emit("join-room", { roomId: 1, emailId: "test@test.com" });
+  });
+
+  return () => {
+    socket.off("connect");
+  };
+}, [socket]);
+
+
 
   return (
     <div className='bg-zinc-900 h-screen flex justify-center items-center flex-col'>
