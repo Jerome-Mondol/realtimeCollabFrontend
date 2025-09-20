@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import VideoConferenceJoining from './pages/VideoConferenceJoining';
 
 import { SocketProvider } from './providers/Socket';
+import Room from './pages/Room';
 
 
 const App = () => {
@@ -32,7 +33,8 @@ const App = () => {
           <Route path={'/login'} element={<Login />} />
           <Route path={'/dashboard'} element={<Dashboard token={token} />} />
           <Route path={'/joinconference'} element={<VideoConferenceJoining />} />
-        </Routes>
+          <Route path={'/room/:roomId'} element={<Room />} />
+        </Routes> 
       </SocketProvider>
 
     </div>
