@@ -1,5 +1,5 @@
-import React, { forwardRef, useState } from 'react'
-import { signUp } from '../Auth/Auth'
+import React, { useState } from 'react'
+import { signUp } from '../components/Auth/Auth'
 import { Link } from 'react-router-dom'
 
 const SignUp = () => {

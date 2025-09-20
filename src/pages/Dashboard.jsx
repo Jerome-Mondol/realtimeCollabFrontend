@@ -1,4 +1,6 @@
 import React from 'react'
+import VideoConferenceJoining from './VideoConferenceJoining';
+
 
 const Dashboard = ({ token }) => {
   if (!token || !token.user) {
@@ -9,7 +11,7 @@ const Dashboard = ({ token }) => {
 
   return (
     <div>
-      Welcome Back, {fullName}
+      <VideoConferenceJoining user={token.user.user_metadata.full_name} />
     </div>
   )
 }
